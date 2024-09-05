@@ -1,0 +1,12 @@
+{
+"branches": {
+"attempt-fix-gzip": "161eef82939c936d66b58032403ee40562cdf18b",
+"master": "15e23858090d0dc29925fce36da6c4f86c06c993",
+"troubleshoot-loss-2": "7da5115e2770bd83119f40dc56ac9e55838bb3c7"
+},
+"tags": {
+"1.4.0": "dc8ec099b67cfa36add52e6c96ab84d84818618b",
+"1.4.1": "ea8674a800e999926f74f265160537b07207789e",
+"1.5.0": "15e23858090d0dc29925fce36da6c4f86c06c993"
+}
+}
