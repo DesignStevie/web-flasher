@@ -6,9 +6,10 @@ defineProps(['image', 'hoverImage', 'title', 'text'])
 
 <template>
   <VHover v-slot:default="{ isHovering, props }">
-    <VCard v-bind="$attrs, props" :class="isHovering ? 'hover-card' : 'default-card'">
+    <VCard v-bind="$attrs, props" :class="isHovering ? 'elevation-16' : undefined" variant="tonal">
       <div class="parent">
         <img :src="image" height="100px" width="100px"/>
+        <img :src="hoverImage" height="100px" width="100px" :class="isHovering ? 'fadeInImage' : 'fadeOutImage'"/>
       </div>
       <VCardTitle>{{ title }}</VCardTitle>
       <VCardText>{{ text }}
@@ -18,55 +19,38 @@ defineProps(['image', 'hoverImage', 'title', 'text'])
 </template>
 
 <style scoped>
-
-.default-card{
- padding: 1.5rem;
- border-radius: 0.5rem;
- border: 1px solid #EFEFEF;
- background-color: #ffffff;
- transition: all ease-in 300ms;
- box-shadow: none;
- text-align: left;
- padding:0;
-}
-
-.hover-card{
-  padding: 1.5rem;
-  border-radius: 0.5rem;
-  background-color: #ffffff;
-  transform: scale(104%);
-  transition: all ease-in 300ms;
-  box-shadow: 0 4px 8px 0px rgba(0,0,0,0.16);
-  text-align: left;
-  padding:0;
-}
-
-.v-card-title{
-  padding:0 20px 0 20px;
-}
-
-.v-card-text{
-padding:0 20px 20px 20px;
-}
-
-.v-card-title{
-  margin: 1.5rem 0 0.25rem 0;
-  font-weight: 600;
-  color: #242527;
-}
-
-.v-card-text{
-  color:#656669
-}
-
 .parent {
+  padding-top: 20px;
   display: flex;
   justify-content: center;
-  background-color: #D7F4ED;
-  height: 140px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.fadeOutImage {
+  animation: fadeOut 1s forwards;
+  position: absolute;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fadeInImage {
+  animation: fadeIn 1s forwards;
+  position: absolute;
 }
 
 </style>
